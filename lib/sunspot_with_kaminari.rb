@@ -36,4 +36,31 @@ module SunspotWithKaminari
   end
 end
 
+module SunspotWithKaminari
+    module Search
+      module StubSessionInstanceMethods
+        def current_page 
+          1
+        end
+        
+        def num_pages
+          1
+        end
+        
+        def limit_value
+          30
+        end
+        
+        def empty?
+          total == 0
+        end
+
+        def any?
+          total > 0
+        end
+      end
+    end
+end
+
 Sunspot::Search::AbstractSearch.send(:include, SunspotWithKaminari::Search::AbstractSearchInstanceMethods)
+Sunspot::Rails::StubSessionProxy::Search.send(:include, SunspotWithKaminari::Search::StubSessionInstanceMethods)
