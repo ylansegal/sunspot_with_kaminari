@@ -46,6 +46,8 @@ module SunspotWithKaminari
         def num_pages
           1
         end
+
+        alias_method :total_pages, :num_pages
         
         def limit_value
           30
