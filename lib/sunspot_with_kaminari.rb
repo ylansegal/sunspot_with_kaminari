@@ -17,6 +17,8 @@ module SunspotWithKaminari
         (total.to_f / @query.per_page).ceil
       end
 
+      alias_method :total_pages, :num_pages
+
       # ==== Returns
       #
       # Integer:: Number of records displayed per page
